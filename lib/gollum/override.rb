@@ -7,4 +7,17 @@ class Precious::Views::Layout
 
     File.read(file_name)
   end
+
+  def committer
+    @committer
+  end 
+
+  def logged
+    !!@committer
+  end
+
+ def not_logged
+    !@committer
+ end
 end
+

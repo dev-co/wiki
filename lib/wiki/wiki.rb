@@ -26,6 +26,10 @@ class Wiki < Precious::App
     end
   end
 
+  before do
+    @committer = session['committer_name']
+  end
+
   before '/edit/*' do
     ensure_authenticated
   end 
