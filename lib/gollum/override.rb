@@ -9,7 +9,7 @@ class Precious::Views::Layout
   end
 
   def committer
-    @committer
+    @committer.split(' ')[0]
   end 
 
   def logged

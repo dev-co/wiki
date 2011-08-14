@@ -47,6 +47,11 @@ class Wiki < Precious::App
 
   get '/logout' do
     env['warden'].logout
+    redirect '/'
+  end
+
+  get '/login' do
+    env['warden'].authenticate(:github)
   end
 end
 
