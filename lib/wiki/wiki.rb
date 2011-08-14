@@ -1,6 +1,8 @@
 require 'gollum'
 require 'gollum/frontend/app'
 require 'warden-github'
+require 'mustache/override'
+require 'gollum/override'
 
 class Wiki < Precious::App
   enable  :sessions
