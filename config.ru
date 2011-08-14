@@ -1,12 +1,11 @@
 $: << 'lib'
 
 require 'rubygems'
-require 'gollum'
-require 'gollum/frontend/app'
+require 'wiki/wiki'
 
 use Rack::ShowExceptions
 
-Precious::App.set(:gollum_path, "#{Dir.pwd}/pages")
-Precious::App.set(:wiki_options, {})
+Wiki.set(:gollum_path, "#{Dir.pwd}/pages")
+Wiki.set(:wiki_options, {})
 
-run Precious::App
+run Wiki
