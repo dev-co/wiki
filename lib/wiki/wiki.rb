@@ -27,7 +27,7 @@ class Wiki < Precious::App
   end
 
   before do
-    @committer = session['committer_name']
+    @committer = committer.name unless committer.nil?
   end
 
   before '/edit/*' do
@@ -40,8 +40,6 @@ class Wiki < Precious::App
 
   get '/auth/github/callback' do
     ensure_authenticated
-    session['committer_name']  = env['warden'].user.name
-    session['committer_email'] = env['warden'].user.email
     redirect '/'
   end
 
@@ -52,6 +50,14 @@ class Wiki < Precious::App
 
   get '/login' do
     env['warden'].authenticate(:github)
+  end
+
+  def commit_message
+    { :message => params[:message], :name => committer.name, :email => committer.email }
+  end
+
+  def committer
+      env['warden'].user
   end
 end
 
